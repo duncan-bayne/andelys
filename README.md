@@ -4,7 +4,7 @@ A replacement for the World Wide Web.  Simple, reliable, programmable, fast, and
 
 ## licence
 
-Secret Santa is licensed under the [GNU Lesser General Public License 2.1](https://www.gnu.org/licenses/lgpl-2.1.html).
+andelys is licensed under the [GNU Lesser General Public License 2.1](https://www.gnu.org/licenses/lgpl-2.1.html).
 
 ### why the LGPL?
 
