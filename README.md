@@ -2,6 +2,8 @@
 
 A replacement for the World Wide Web.  Simple, reliable, programmable, fast, and secure.
 
+Documentation for development and use can be found in the [andelys wiki](https://github.com/duncan-bayne/andelys/wiki).
+
 ## licence
 
 andelys is licensed under the [GNU Lesser General Public License 2.1](https://www.gnu.org/licenses/lgpl-2.1.html).
