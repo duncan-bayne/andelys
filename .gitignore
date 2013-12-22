@@ -1,2 +1,4 @@
 *.rkt~
+bin/*
+!bin/.gitignore
 
