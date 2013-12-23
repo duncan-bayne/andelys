@@ -4,6 +4,9 @@
 (define (menu-file-exit-click item control)
   (exit 0))
 
+(define (menu-navigate-go-click item control)
+  (message-box "Navigate" (send address-text get-value)))
+  
 (define (menu-help-about-click item control)
   (define (close-button-click item control) (send about-dialog show #f))
   (define about-dialog   
@@ -30,10 +33,20 @@
 (define menu-file-exit 
   (new menu-item% [parent menu-file] [label "E&xit"] [callback menu-file-exit-click]))
 
+(define menu-navigate
+  (new menu% [parent menu] [label "&Navigate"]))
+(define navigate-menu-go
+  (new menu-item% [parent menu-navigate] [label "&Go"] [callback menu-navigate-go-click]))
+
 (define menu-help
   (new menu% [parent menu] [label "&Help"]))
 (define menu-help-about
   (new menu-item% [parent menu-help] [label "&About"] [callback menu-help-about-click]))
 
-(send frame show #t)
+(define (address-changed item control)
+  (message-box "address" item))
 
+(define address-text
+  (new text-field% [parent frame] [label "Address:"] [init-value "http://"]))
+
+(send frame show #t)
