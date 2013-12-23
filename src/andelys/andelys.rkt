@@ -1,12 +1,24 @@
 #lang racket
 (require racket/gui/base)
+(require net/url)
 
 (define (menu-file-exit-click item control)
   (exit 0))
 
+(define (get-page url)
+  (port->string
+   (get-pure-port (string->url url))))
+
+(define (navigate)
+  (send contents-text set-value "loading ...")
+  (send contents-text set-value (get-page (send address-text get-value))))
+
+(define (address-text-changed field event)
+    (cond [(eq? (send event get-event-type) 'text-field-enter) (navigate)]))
+
 (define (menu-navigate-go-click item control)
-  (message-box "Navigate" (send address-text get-value)))
-  
+  (navigate))
+
 (define (menu-help-about-click item control)
   (message-box 
    "About Andelys" 
@@ -36,6 +48,9 @@
   (message-box "address" item))
 
 (define address-text
-  (new text-field% [parent frame] [label "Address:"] [init-value "http://"]))
+  (new text-field% [parent frame] [label "Address:"] [init-value "http://"] [callback address-text-changed]))
+
+(define contents-text
+  (new text-field% [parent frame] [label ""] [init-value ""] [style '(multiple)]))
 
 (send frame show #t)
