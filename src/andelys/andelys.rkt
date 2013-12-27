@@ -12,9 +12,7 @@
 
 (define (navigate)
   (send contents-text set-value "loading ...")
-  (let ([code (get-page (send address-text get-value))]
-        [evaluator (make-evaluator 'racket/base [sandbox-gui-available #t])])
-    (evaluator code)))
+  (send contents-text set-value (get-page (send address-text get-value))))
 
 (define (address-text-changed field event)
     (cond [(eq? (send event get-event-type) 'text-field-enter) (navigate)]))
@@ -51,7 +49,7 @@
   (message-box "address" item))
 
 (define address-text
-  (new text-field% [parent frame] [label "Address:"] [init-value "http://localhost:8080/hello-world.rkt"] [callback address-text-changed]))
+  (new text-field% [parent frame] [label "Address:"] [init-value "http://andelys.org"] [callback address-text-changed]))
 
 (define contents-text
   (new text-field% [parent frame] [label ""] [init-value ""] [style '(multiple)]))
