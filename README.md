@@ -16,4 +16,4 @@ Also, andelys is built upon Racket (formerly PLT Scheme) and Racket is also lice
 
 ### why 2.1?
 
-andelys is built on top of Racket, which is [itself licensed](http://download.racket-lang.org/license.html) under the LGPL v2.1.
+andelys is built on top of [Racket](http://racket-lang.org/), which is [itself licensed](http://download.racket-lang.org/license.html) under the LGPL v2.1.
