@@ -5,7 +5,7 @@
 
 (define (h1 text)
   (let ([current-content (send contents-text get-value)])
-    (let ([new-content (string-append current-content text)])
+    (let ([new-content (string-append current-content "# " text "\n")])
       (send contents-text set-value new-content))))
 
 (define (menu-file-exit-click item control)
@@ -18,7 +18,7 @@
 (define (navigate)
   (let ([andelys (get-page (send address-text get-value))])
     (print andelys)
-    (eval andelys)))
+    (eval (read (open-input-string andelys)) (current-namespace))))
 
 (define (address-text-changed field event)
     (cond [(eq? (send event get-event-type) 'text-field-enter) (navigate)]))
