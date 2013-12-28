@@ -17,7 +17,6 @@
 
 (define (navigate)
   (let ([andelys (get-page (send address-text get-value))])
-    (print andelys)
     (eval (read (open-input-string andelys)) (current-namespace))))
 
 (define (address-text-changed field event)
