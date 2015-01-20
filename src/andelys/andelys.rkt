@@ -3,11 +3,6 @@
          racket/gui/base
          racket/sandbox)
 
-(define (h1 text)
-  (let ([current-content (send contents-text get-value)])
-    (let ([new-content (string-append current-content "# " text "\n")])
-      (send contents-text set-value new-content))))
-
 (define (menu-file-exit-click item control)
   (exit 0))
 
@@ -17,7 +12,7 @@
 
 (define (navigate)
   (let ([andelys (get-page (send address-text get-value))])
-    (eval (read (open-input-string andelys)) (current-namespace))))
+    (send contents-text set-value andelys)))
 
 (define (address-text-changed field event)
     (cond [(eq? (send event get-event-type) 'text-field-enter) (navigate)]))
